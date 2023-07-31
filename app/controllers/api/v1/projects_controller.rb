@@ -10,19 +10,23 @@ class Api::V1::ProjectsController < ApplicationController
     project = ProjectManagementService.create_with_gemfile(project_params, project_gemfile_params, current_user)
 
     if project.persisted?
-      # Gérer la redirection ou la réponse en cas de succès
+      flash[:notice] = "Project created successfully!"
       redirect_to root_path
     else
-      # Gérer la réponse en cas d'échec de création
-      render :new
+      flash[:alert] = "There was an error creating the project. Please try again."
+      redirect_to root_path
     end
   end
 
   def update
     project = Project.find(params[:id])
     project_gemfile_params = params.require(:project_gemfile).permit(:content)
-    ProjectManagementService.update_with_gemfile(project, project_gemfile_params) # <-- modification here
-    redirect_to root_path
+    
+    if ProjectManagementService.update_with_gemfile(project, project_gemfile_params)
+      flash[:notice] = "Project updated successfully!"
+    else
+      flash[:alert] = "There was an error updating the project. Please try again."
+    end
 end
 
   def show
