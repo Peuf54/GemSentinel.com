@@ -1,13 +1,16 @@
 @import 'variables';
 
-#new-session-container, #new-registration-container, #create-project-form-container, #update-project-form-container {
+#new-session-container,
+#new-registration-container,
+#create-project-form-container,
+#update-project-form-container {
     width: 500px;
     background-color: $containers;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding-bottom: 35px;
     color: $ruby;
     gap: 10px;
@@ -38,6 +41,17 @@
         align-items: center;
         gap: 20px;
 
+        #error_explanation {
+            border: 1px solid $ruby;
+            h2 {
+                font-size: 1rem;
+            }
+            ul {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
         .field,
         .actions {
             display: flex;
@@ -46,12 +60,14 @@
             font-weight: bold;
             gap: 5px;
 
-            input, textarea {
+            input,
+            textarea {
                 font-size: 1.5rem;
                 width: 100%;
                 padding: 2px 5px;
+
                 &::placeholder {
-                  font-size: 1.2rem;
+                    font-size: 1.2rem;
                 }
             }
 
@@ -62,7 +78,7 @@
                 border: 2px $icons dashed;
             }
 
-            input[type="submit"], {
+            input[type="submit"] {
                 padding: 5px 50px;
                 background-color: $lightred;
                 color: $ruby;
