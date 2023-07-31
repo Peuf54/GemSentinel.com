@@ -1,0 +1,45 @@
+#flash-messages {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    z-index: 1000;  /* Assurez-vous que les messages flash sont affichés au-dessus des autres éléments */
+}
+
+.flash {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 300px;  /* Taille arbitraire, à adapter selon vos besoins */
+}
+
+.flash.alert {
+    background-color: #d73636;
+    border-color: #f4072f;
+    color: #ffffff;
+}
+
+.flash.notice {
+    background-color: #28d8c7;
+    border-color: #36d693;
+    color: #90edcc;
+}
+
+.close-flash {
+    float: right;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin: -15px -15px 0 0;
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+.fadeout {
+    animation-name: fadeout;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
